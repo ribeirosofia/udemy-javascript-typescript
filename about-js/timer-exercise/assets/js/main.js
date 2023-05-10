@@ -11,9 +11,10 @@ const start = document.querySelector(".start");
 const pause = document.querySelector(".pause");
 const stopClock = document.querySelector(".stop");
 let seconds = 0;
+let timer;
 
 const startTime = () => {
-  const timer = setInterval(() => {
+  timer = setInterval(() => {
     seconds++;
     clock.innerHTML = displaySeconds(seconds);
   }, 1000);
@@ -24,9 +25,10 @@ start.addEventListener("click", (event) => {
 });
 
 pause.addEventListener("click", (event) => {
-  console.log("Cliquei no pausar");
+  clearInterval(timer);
 });
 
 stopClock.addEventListener("click", (event) => {
-  console.log("Cliquei no zerar");
+  clearInterval(timer);
+  clock.innerHTML = "00:00:00";
 });
