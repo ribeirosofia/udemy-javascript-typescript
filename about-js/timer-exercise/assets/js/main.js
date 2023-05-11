@@ -21,12 +21,14 @@ const startTime = () => {
 };
 
 start.addEventListener("click", (event) => {
+  clock.classList.remove("pause-clock");
   clearInterval(timer);
   startTime();
 });
 
 pause.addEventListener("click", (event) => {
   clearInterval(timer);
+  clock.classList.add("pause-clock");
 });
 
 stopClock.addEventListener("click", (event) => {
