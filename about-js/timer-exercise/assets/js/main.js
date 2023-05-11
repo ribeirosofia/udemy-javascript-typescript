@@ -32,4 +32,5 @@ pause.addEventListener("click", (event) => {
 stopClock.addEventListener("click", (event) => {
   clearInterval(timer);
   clock.innerHTML = "00:00:00";
+  seconds = 0;
 });
