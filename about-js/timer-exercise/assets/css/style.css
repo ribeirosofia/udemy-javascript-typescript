@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
 :root {
   --primary-color: rgb(17, 86, 102);
-  --danger-color: rgb(255, 150, 150);
+  --paused-color: red;
 }
 
 * {
@@ -28,4 +28,8 @@ body {
 
 .clock {
   font-size: 3em;
+}
+
+.pause-clock {
+  color: var(--paused-color);
 }
