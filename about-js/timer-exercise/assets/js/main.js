@@ -21,6 +21,7 @@ const startTime = () => {
 };
 
 start.addEventListener("click", (event) => {
+  clearInterval(timer);
   startTime();
 });
 
