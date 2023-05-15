@@ -45,6 +45,30 @@ document.addEventListener("click", (e) => {
   const el = e.target;
   if (el.classList.contains("delete")) {
     el.parentElement.remove();
+    saveTasks();
   }
 });
 
+const saveTasks = () => {
+  const liTasks = tasks.querySelectorAll("li");
+  const taskLists = [];
+
+  for (let task of liTasks) {
+    let taskText = task.innerText;
+    taskText = taskText.replace("Apagar", "");
+    console.log(taskText);
+    taskLists.push(taskText);
+  }
+  const tasksJSON = JSON.stringify(taskLists);
+  localStorage.setItem("tasks", tasksJSON);
+};
+
+const addSavedTasks = () => {
+  const tasks = localStorage.getItem("tasks");
+  const taskLists = JSON.parse(tasks);
+  for (let task of taskLists) {
+    createTask(task);
+  }
+};
+
+addSavedTasks();
