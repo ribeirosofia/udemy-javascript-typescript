@@ -4,6 +4,7 @@ function Calc() {
   this.start = () => {
     this.captureClicks();
     this.captureEnter();
+    this.captureOperations();
   };
 
   this.captureEnter = () => {
@@ -20,18 +21,6 @@ function Calc() {
       if (el.classList.contains("btn-num")) {
         this.addDisplayNum(el);
       }
-      if (el.classList.contains("btn-div")) {
-        this.operationDiv(el);
-      }
-      if (el.classList.contains("btn-sum")) {
-        this.operationSum(el);
-      }
-      if (el.classList.contains("btn-tim")) {
-        this.operationTimes(el);
-      }
-      if (el.classList.contains("btn-min")) {
-        this.operationMin(el);
-      }
       if (el.classList.contains("btn-clear")) {
         this.clear();
       }
@@ -44,9 +33,27 @@ function Calc() {
     });
   };
 
+  this.captureOperations = () => {
+    document.addEventListener("click", (e) => {
+      const el = e.target;
+      if (el.classList.contains("btn-div")) {
+        this.operationDiv(el);
+      }
+      if (el.classList.contains("btn-sum")) {
+        this.operationSum(el);
+      }
+      if (el.classList.contains("btn-tim")) {
+        this.operationTimes(el);
+      }
+      if (el.classList.contains("btn-min")) {
+        this.operationMin(el);
+      }
+    });
+  };
+
   this.doMath = () => {
     try {
-      const calc = eval.this.display.value;
+      const calc = eval(this.display.value);
       if (!calc) {
         alert("Conta inválida");
         return;
@@ -63,8 +70,22 @@ function Calc() {
     this.display.focus();
   };
 
-  this.operationDiv = (el) => {};
-  
+  this.operationDiv = (el) => {
+    this.display.value += "/";
+  };
+
+  this.operationSum = (el) => {
+    this.display.value += "+";
+  };
+
+  this.operationTimes = (el) => {
+    this.display.value += "*";
+  };
+
+  this.operationMin = (el) => {
+    this.display.value += "-";
+  };
+
   this.clear = () => {
     this.display.value = "";
   };
