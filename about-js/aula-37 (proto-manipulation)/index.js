@@ -5,12 +5,12 @@ function Product(name, price) {
 }
 
 
-Product.prototype.discount = (percents) => {
+Product.prototype.discount = function (percents) {
   console.log(this);
   this.price = this.price - this.price * (percents / 100);
 };
 
-Product.prototype.increase = (percents) => {
+Product.prototype.increase = function (percents) {
   console.log(this);
   this.price = this.price + this.price * (percents / 100);
 };
@@ -22,10 +22,10 @@ const p2 = {
   price: 15,
 };
 
-// Object.setPrototypeOf(p2, Product.prototype);
+ Object.setPrototypeOf(p2, Product.prototype);
 
 p1.increase(10);
-// p2.discount(10);
+p2.discount(10);
 
 console.log(p1);
 console.log(p2);
